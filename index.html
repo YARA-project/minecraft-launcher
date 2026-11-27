@@ -1,80 +1,307 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>تحميل Glock-launcher v4.3.1</title>
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
-body {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  background: #0d1117;
-  color: #f0f6fc;
-  padding: 20px;
-}
-.card {
-  width: 100%;
-  max-width: 460px;
-  background: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 16px;
-  padding: 28px;
-  text-align: center;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.45);
-}
-.badge {
-  display: inline-block;
-  background: rgba(56, 139, 253, 0.15);
-  color: #58a6ff;
-  border: 1px solid rgba(56, 139, 253, 0.4);
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-size: 13px;
-  margin-bottom: 14px;
-}
-h1 { font-size: 24px; margin-bottom: 10px; }
-p { color: #8b949e; font-size: 14px; line-height: 1.6; margin-bottom: 22px; }
-.meta {
-  background: #0d1117;
-  border: 1px solid #21262d;
-  border-radius: 10px;
-  padding: 12px;
-  font-size: 13px;
-  color: #c9d1d9;
-  margin-bottom: 22px;
-  display: flex;
-  justify-content: space-between;
-}
-.btn {
-  display: block;
-  width: 100%;
-  text-decoration: none;
-  background: #238636;
-  color: #ffffff;
-  font-weight: 700;
-  padding: 14px 18px;
-  border-radius: 10px;
-  transition: background 0.2s ease;
-}
-.btn:hover { background: #2ea043; }
-.note { margin-top: 14px; font-size: 12px; color: #8b949e; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UpCraft Launcher — لانشر ماينكرافت مع كابات مجانية</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card: #111827;
+      --card-2: #172033;
+      --border: #243049;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #22c55e;
+      --accent-hover: #16a34a;
+      --blue: #38bdf8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #132238 0%, var(--bg) 55%);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 36px 20px 60px;
+    }
+
+    .hero {
+      background: linear-gradient(145deg, rgba(23, 32, 51, 0.92), rgba(17, 24, 39, 0.96));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 40px 28px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      margin-bottom: 32px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(34, 197, 94, 0.14);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      margin-bottom: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    h1 span {
+      color: var(--blue);
+    }
+
+    .hero p {
+      max-width: 660px;
+      margin: 0 auto 26px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      padding: 13px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      border: none;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #052e16;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--card-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    .status {
+      min-height: 24px;
+      font-size: 13px;
+      color: #4ade80;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.5);
+    }
+
+    .card .icon {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .info-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .info-meta {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .info-meta strong {
+      color: var(--text);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 34px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-<main class="card">
-<span class="badge">الإصدار v4.3.1 • Portable</span>
-<h1>Glock-launcher</h1>
-<p>نسخة محمولة جاهزة للتشغيل على Windows دون تثبيت، مع دعم إدارة النسخ والمودات.</p>
-<div class="meta">
-  <span>الملف: Minecraft.Launcher-4.3.1-portable.exe</span>
-  <span>~69.2 MB</span>
-</div>
-<a class="btn" href="https://github.com/youneskord1912-wq/minecraft-launcher/releases/download/v4.3.1/Minecraft.Launcher-4.3.1-portable.exe" download>
-  تحميل النسخة المحمولة الآن
-</a>
-<p class="note">المصدر الرسمي: GitHub Releases (v4.3.1)</p>
-</main>
+  <div class="container">
+    <section class="hero">
+      <div class="badge">الإصدار الرسمي v4.3.2 • Windows</div>
+      <h1>مرحباً بك في <span>UpCraft</span></h1>
+      <p>
+        لانشر ماينكرافت سريع وخفيف مصمم لتجربة لعب سلسة مع <strong>كابات مجانية</strong>، وتشغيل فوري بدون تثبيت، ودعم مريح للإصدارات والمودات.
+      </p>
+      <div class="actions">
+        <a
+          id="dl-portable"
+          class="btn btn-primary"
+          href="https://github.com/up-craft/minecraft-launcher/releases/download/v4.3.2/UpCraft-4.3.2-portable.exe"
+          download
+        >
+          ⬇️ تحميل النسخة المحمولة (Portable)
+        </a>
+        <a
+          id="dl-setup"
+          class="btn btn-secondary"
+          href="https://github.com/up-craft/minecraft-launcher/releases/download/v4.3.2/UpCraft-Setup-4.3.2.exe"
+          download
+        >
+          💿 تحميل نسخة التثبيت (Setup)
+        </a>
+        <button class="btn btn-secondary" type="button" onclick="copyLink()">
+          📋 نسخ رابط التحميل
+        </button>
+      </div>
+      <div id="status-msg" class="status"></div>
+    </section>
+
+    <h2 class="section-title">✨ لماذا تختار UpCraft؟</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🦸</div>
+        <h3>كابات مجانية</h3>
+        <p>استمتع بكابات مجانية ومميزة داخل اللعبة لإبراز شخصيتك دون تعقيد أو قيود مزعجة.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⚡</div>
+        <h3>خفيف وسريع الأداء</h3>
+        <p>مبني ليستهلك موارد النظام بكفاءة عالية، مما يجعله مناسباً للأجهزة الضعيفة والمتوسطة.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📦</div>
+        <h3>تشغيل محمول فوري</h3>
+        <p>نسخة Portable تعمل مباشرة من ملف واحد دون تثبيت، مثالية للتنقل والتشغيل السريع.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🧩</div>
+        <h3>مرونة مع الإصدارات والمودات</h3>
+        <p>تبديل سريع بين نسخ اللعبة وإدارة الإعدادات بواجهة واضحة ومباشرة.</p>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-meta">
+        <strong>النظام المدعوم:</strong> Windows (x64) &nbsp;|&nbsp;
+        <strong>الإصدار:</strong> v4.3.2 &nbsp;|&nbsp;
+        <strong>المصدر:</strong> GitHub Releases
+      </div>
+      <a
+        class="btn btn-secondary"
+        href="https://github.com/up-craft/minecraft-launcher/releases"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        عرض كل الإصدارات
+      </a>
+    </div>
+
+    <footer>
+      مشروع <a href="https://github.com/up-craft/minecraft-launcher" target="_blank" rel="noopener noreferrer">UpCraft</a> — جميع الحقوق محفوظة © 2026
+    </footer>
+  </div>
+
+  <script>
+    const portableUrl = "https://github.com/up-craft/minecraft-launcher/releases/download/v4.3.2/UpCraft-4.3.2-portable.exe";
+    const statusEl = document.getElementById("status-msg");
+
+    document.getElementById("dl-portable").addEventListener("click", () => {
+      statusEl.textContent = "جاري بدء تحميل نسخة UpCraft Portable (v4.3.2)...";
+    });
+
+    document.getElementById("dl-setup").addEventListener("click", () => {
+      statusEl.textContent = "جاري بدء تحميل نسخة UpCraft Setup (v4.3.2)...";
+    });
+
+    async function copyLink() {
+      try {
+        await navigator.clipboard.writeText(portableUrl);
+        statusEl.textContent = "تم نسخ رابط التحميل المباشر إلى الحافظة!";
+      } catch {
+        statusEl.textContent = portableUrl;
+      }
+    }
+  </script>
 </body>
 </html>
